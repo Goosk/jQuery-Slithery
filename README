@@ -1,0 +1,23 @@
++--- License -------------------------------------------------------------------------------+
+|																							|
+|	None. Use as you wish.																	|
+|																							|
+|	Please consider leaving a link somewhere pointing back here.							|
+|																							|
++-------------------------------------------------------------------------------------------+
+	
++--- Usage -------------------------------------------------------------------------------------------------+
+|																											|
+|	Speed: The speed of which the element is displayed and hidden (default: 300)							|
+|	Top: Amount of pixels from the top of the page which the element will show itself (default: 300)		|
+|																											|
+|	Example basic:																							|
+|	$('#element').slithery();																				|
+|																											|
+|	Example with settings:																					|
+|	$('#element').slithery({																				|
+|		speed: 2000,																						|
+|		top: 1000																							|
+|	});																										|
+|																											|
++-----------------------------------------------------------------------------------------------------------+

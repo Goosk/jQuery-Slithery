@@ -1,0 +1,52 @@
+body {
+	padding: 0;
+	margin: 0;
+	color: #fff;
+	background: #202020;
+}
+
+#wrapper {
+	width: 690px;
+	margin: 0 auto;
+}
+
+#toSlither {
+	width: 650px;
+	margin: 0 auto;
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	padding: 10px 20px;
+	color: #000;
+	background: #ccc;
+	display: none;
+	border-radius: 0 0 15px 15px;
+}
+
+#toSlitherLeft {
+	width: 100px;
+	height: 250px;
+	margin: 0 auto;
+	position: fixed;
+	z-index: 10;
+	top: 20px;
+	left: 0;
+	padding: 10px 20px;
+	color: #000;
+	display: none;
+	background: #ccc;
+	border-radius: 0px 15px 15px 0px;
+}
+
+#pageStretcher {
+	height: 5000px;
+	position: relative;
+}
+
+.notice {
+	position: absolute;
+	top: 1000px;
+	z-index: 5;
+}
+
+
