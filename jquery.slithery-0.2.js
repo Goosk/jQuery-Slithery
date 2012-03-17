@@ -1,24 +1,7 @@
 /**
- * Slithery jQuery Plugin v0.1-dev
- * Date: 2012-03-16
- * Info: <GITHUB URL GOES HERE>
- *
- * Usage:
- *		Simple:
- *		$('#element').slithery();
- *
- *		With settings:
- *		$('#element').slithery({
-			position: 'left',
- *			top: 500,
- *			speed: 1000
- *		});
- *
- * (optional) Position:	The position of the element, valid arguments: top, right, left, bottom. (default: top).
- * (optional) Top:		The amount of pixels from the top of the page before the element will be displayed.
- * (optional) Speed:	The time (in miliseconds) it takes for the element to be fully displayed.
- * (optional) onShow:	Function to be run each time the element has been fully shown.
- * (optional) onHide:	Function to be run each time the element has been fully hidden.
+ * Slithery jQuery Plugin v0.2
+ * Date: 2012-03-17
+ * Info: https://github.com/Goosk/jQuery-Slithery
  */
 
 (function($) {
@@ -28,33 +11,36 @@
 				var obj = $(this);
 				var animShow = {};
 				var animHide = {};
+				var $window = $(window);
 				var posCss, posAnim;
 				var animating = false; // Flag to check if we're already in the middle of an animation
 				var position = obj.position()['top']; // Position of the element from the top of the page in pixels
 				
 				// Default values
 				var defaults = {
-					top: 0,
-					speed: 300
-				}
+					position: 'top',
+					easing: 'linear',
+					top: 300,
+					speed: 250
+				};
 				
 				// Settings should be defaults if none are given
 				if(typeof settings === 'undefined') {
-					alert("hurr");
 					settings = {};
 				}
 				
-				var vars = {}
+				var vars = {};
 				
 				// Set values if they're set, otherwise fall back to defaults
 				vars['position'] = ((settings['position'] !== undefined) ? settings['position'] : defaults['position']);
+				vars['easing'] = ((settings['easing'] !== undefined) ? settings['easing'] : defaults['easing']);
 				vars['top'] = ((settings['top'] !== undefined) ? settings['top'] : defaults['top']);
 				vars['speed'] = ((settings['speed'] !== undefined) ? settings['speed'] : defaults['speed']);
 				
 				if(settings['onHide'] !== undefined) vars['onHide'] = settings['onHide'];
 				if(settings['onShow'] !== undefined) vars['onShow'] = settings['onShow'];
 				
-				
+				// Set the right values for animations
 				switch(vars['position']) {
 					default:
 					case 'top':
@@ -82,16 +68,15 @@
 						break;
 				}
 				
-				animShow[posAnim] = 0;
-				animHide[posAnim] = -objSize;
+				animShow[posAnim] = [0, vars['easing']];
+				animHide[posAnim] = [-objSize, vars['easing']];
 				
-				// Trigger a check each time the user scrolls
-				$(window).bind('scroll', function() {
+				var update = function() {
 					// Update position of the element
-					position = obj.position()['top'];
+					position = $window.scrollTop();
 					
 					// If the element is further down than we want
-					if(position > (vars['top'] + objSize)) {
+					if(position > vars['top']) {
 						// is not in the middle of an animation and not visible
 						if(!animating && !obj.is(':visible')) {
 							animating = true;
@@ -111,7 +96,7 @@
 								}
 							});
 						}
-					} else if(position < (vars['top'] - objSize)) {
+					} else if(position < (vars['top'] + 5)) {
 						// We should hide it if it's visible and not already being hidden
 						if(!animating && obj.is(':visible')) {
 							animating = true;
@@ -131,6 +116,14 @@
 							});
 						}
 					}
+				}
+				
+				// Trigger a check each time the user scrolls
+				$window.bind('scroll', function() {
+					update();
+					
+					// @TODO: Replace with animation check instead
+					setTimeout(update, vars['speed']);
 				});
 			});
 		}

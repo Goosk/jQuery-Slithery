@@ -38,6 +38,20 @@ body {
 	border-radius: 0px 15px 15px 0px;
 }
 
+#toSlitherBottom {
+	width: 500px;
+	height: 80px;
+	margin: 0 auto;
+	position: fixed;
+	z-index: 10;
+	bottom: 0;
+	padding: 10px 20px;
+	color: #000;
+	display: none;
+	background: #ccc;
+	border-radius: 15px 15px 0px 0px;
+}
+
 #pageStretcher {
 	height: 5000px;
 	position: relative;

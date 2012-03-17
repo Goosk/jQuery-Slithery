@@ -1,23 +1,54 @@
-+--- License -------------------------------------------------------------------------------+
-|																							|
-|	None. Use as you wish.																	|
-|																							|
-|	Please consider leaving a link somewhere pointing back here.							|
-|																							|
-+-------------------------------------------------------------------------------------------+
+=== Slithery ===
+Current version: 0.2
+Author: Goosk
+Contact: admin@goosk.se
+
+
+=== How to use ===
+	See example.html or read on below:
 	
-+--- Usage -------------------------------------------------------------------------------------------------+
-|																											|
-|	Speed: The speed of which the element is displayed and hidden (default: 300)							|
-|	Top: Amount of pixels from the top of the page which the element will show itself (default: 300)		|
-|																											|
-|	Example basic:																							|
-|	$('#element').slithery();																				|
-|																											|
-|	Example with settings:																					|
-|	$('#element').slithery({																				|
-|		speed: 2000,																						|
-|		top: 1000																							|
-|	});																										|
-|																											|
-+-----------------------------------------------------------------------------------------------------------+
+	Usage:
+		Simple:
+			$('#element').slithery();
+
+		With settings:
+			$('#element').slithery({
+				position: 'left',
+				top: 500,
+				speed: 1000,
+				easing: 'swing',
+				onShow: function() {
+					alert("Fully shown!");
+				},
+				onHide: function() {
+					alert("Fully hidden!");
+				}
+			});
+
+		Arguments available:
+			(optional) Position:	The position of the element, valid arguments: top, right, left, bottom. (default: top).
+			(optional) Easing:		Animation to use when the object is shown/hidden, by default only linear and swing are 
+									available. If you want more effects you can download jQuery.ui for example:
+									(http://jqueryui.com/demos/effect/easing.html)
+			(optional) Top:			The amount of pixels from the top of the page before the element will be displayed.
+			(optional) Speed:		The time (in miliseconds) it takes for the element to be fully displayed.
+			(optional) onShow:		Function to be run each time the element has been fully shown.
+			(optional) onHide:		Function to be run each time the element has been fully hidden.
+
+
+=== Changelog ===
+# Legend:
+	+ New feature
+	~ Bugfix/change
+	- Removed feature
+
+
+# 0.2 [2012-03-17]
+	+ Elements can now be positioned on every side of the browser and not just on the top.
+	+ Added ability to define which easing effect to be used, can be extended using jQuery.ui
+	~ Fixed where the element would not hide if it had not finished animating and the user
+	  scrolled back up above the threshold.
+
+  
+# 0.1-dev [2012-03-16]
+	+ First release
