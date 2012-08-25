@@ -1,39 +1,23 @@
-=== Slithery ===
-Current version: 0.2
+=== jQuery Slithery ===
+Current version: 0.2.1
 Author: Goosk
 Contact: admin@goosk.se
 
 
 === How to use ===
-	See example.html or read on below:
-	
-	Usage:
-		Simple:
-			$('#element').slithery();
+	See example.html
 
-		With settings:
-			$('#element').slithery({
-				position: 'left',
-				top: 500,
-				speed: 1000,
-				easing: 'swing',
-				onShow: function() {
-					alert("Fully shown!");
-				},
-				onHide: function() {
-					alert("Fully hidden!");
-				}
-			});
-
-		Arguments available:
-			(optional) Position:	The position of the element, valid arguments: top, right, left, bottom. (default: top).
-			(optional) Easing:		Animation to use when the object is shown/hidden, by default only linear and swing are 
+	Arguments available:
+		(optional) Position:		The position of the element, valid arguments: top, right, left, bottom. (default: top).
+		(optional) Easing:			Animation to use when the object is shown/hidden, by default only linear and swing are 
 									available. If you want more effects you can download jQuery.ui for example:
 									(http://jqueryui.com/demos/effect/easing.html)
-			(optional) Top:			The amount of pixels from the top of the page before the element will be displayed.
-			(optional) Speed:		The time (in miliseconds) it takes for the element to be fully displayed.
-			(optional) onShow:		Function to be run each time the element has been fully shown.
-			(optional) onHide:		Function to be run each time the element has been fully hidden.
+		(optional) Top:				The amount of pixels from the top of the page before the element will be displayed.
+		(optional) Speed:			The time (in milliseconds) it takes for the element to be fully displayed.
+		(optional) onShow:			Function to be run each time the element starts to show.
+		(optional) onFullyShown:	Function to be run each time the element is fully shown.
+		(optional) onHide:			Function to be run each time the element starts to hide.
+		(optional) onFullyHidden:	Function to be run each time the element is fully hidden.
 
 
 === Changelog ===
@@ -41,6 +25,12 @@ Contact: admin@goosk.se
 	+ New feature
 	~ Bugfix/change
 	- Removed feature
+
+# 0.2.1 [2012-08-25]
+	~ Altered the code a bit
+	+ Added new hooks (onFullyHidden and onFullyShown) which are run when the element has fully
+	  finished animating and altered the old ones (onHide, onShow) to trigger when the element
+	  begins animating.
 
 
 # 0.2 [2012-03-17]

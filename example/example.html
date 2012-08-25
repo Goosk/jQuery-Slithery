@@ -4,19 +4,25 @@
 		<title>Slithery Example</title>
 		<link href="style.css" rel="stylesheet" type="text/css" />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-		<script src="jquery.slithery-0.2.js" type="text/javascript"></script>
+		<script src="../jquery.slithery-0.2.js" type="text/javascript"></script>
 		
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$('#toSlither').slithery({
-					top: 1000,
-					speed: 500,
+				$('#toSlitherTop').slithery({
+					top: 1200,
+					speed: 800,
 					easing: 'swing',
 					onShow: function() {
 						console.log("Show!");
 					},
+					onFullyShown: function() {
+						console.log("Fully shown!");
+					},
 					onHide: function() {
-						console.log("Hidden!");
+						console.log("Hide!");
+					},
+					onFullyHidden: function() {
+						console.log('Fully hidden!');
 					}
 				});
 				
@@ -36,9 +42,9 @@
 	
 	<body>
 		<div id="wrapper">
-			<div id="toSlither">
+			<div id="toSlitherTop">
 				<p>Hello! This is shown because you've scrolled more than
-					1000 pixels down on the page</p>
+					1200 pixels down on the page</p>
 			</div>
 			
 			<div id="toSlitherLeft">
@@ -47,8 +53,7 @@
 			</div>
 			
 			<div id="toSlitherBottom">
-				<p>Hello! This is shown because you've scrolled more than
-					1000 pixels down on the page</p>
+				<p>Coming from the bottom, what's going on up here?</p>
 			</div>
 			
 			<div id="pageStretcher">
